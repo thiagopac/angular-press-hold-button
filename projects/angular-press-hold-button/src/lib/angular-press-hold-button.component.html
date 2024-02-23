@@ -2,12 +2,10 @@
   class="button-hold"
   (mousedown)="startAction($event)"
   (mouseup)="stopAction()"
-  (mouseout)="stopAction()"
+  (mouseleave)="stopAction()"
   (touchstart)="startAction($event)"
   (touchend)="stopAction()"
 >
-  <div class="icon-slot">
-    <ng-content select="[icon]"></ng-content>
-  </div>
-  Publish
+  <div #progressBar class="progress-bar"></div>
+  <div class="label-container">Label</div>
 </button>

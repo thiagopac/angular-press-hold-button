@@ -4,6 +4,7 @@ import {
   ContentChild,
   ElementRef,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 
 @Component({
@@ -14,9 +15,10 @@ import {
 })
 export class AngularPressHoldButton implements AfterContentInit {
   @ContentChild('iconContent') iconContent: ElementRef | undefined;
+  @ViewChild('progressBar') progressBar: ElementRef | undefined;
   hasCustomIcon: boolean = false;
   private progressInterval: any;
-  private progress: number = 0;
+  private progressWidth: number = 0;
   duration: number = 1500;
 
   constructor(private elRef: ElementRef, private renderer: Renderer2) {}
@@ -26,31 +28,37 @@ export class AngularPressHoldButton implements AfterContentInit {
   }
 
   startAction(event: Event): void {
-    console.log('Ação iniciada');
     event.preventDefault();
     this.clearProgress();
+    console.log('Ação iniciada!');
     this.progressInterval = setInterval(() => {
-      this.progress = Math.min(100, this.progress + 1);
+      this.progressWidth = Math.min(
+        100,
+        this.progressWidth + 100 / (this.duration / 100)
+      );
       this.updateProgress();
-      if (this.progress === 100) {
+      if (this.progressWidth >= 100) {
         this.actionSuccess();
       }
-    }, this.duration / 100);
+    }, 100);
   }
 
   stopAction(event?: Event): void {
     if (event) {
       event.preventDefault();
     }
+    console.log('Ação cancelada!');
     clearInterval(this.progressInterval);
     this.progressInterval = setInterval(() => {
-      this.progress = Math.max(0, this.progress - 2);
+      this.progressWidth = Math.max(
+        0,
+        this.progressWidth - 100 / (this.duration / 100)
+      );
       this.updateProgress();
-      if (this.progress === 0) {
+      if (this.progressWidth <= 0) {
         clearInterval(this.progressInterval);
       }
-    }, this.duration / 200);
-    console.log('Ação cancelada');
+    }, 100);
   }
 
   private actionSuccess(): void {
@@ -59,18 +67,20 @@ export class AngularPressHoldButton implements AfterContentInit {
   }
 
   private updateProgress(): void {
-    this.renderer.setStyle(
-      this.elRef.nativeElement,
-      'background',
-      `linear-gradient(to right, #007bff ${this.progress}%, transparent ${this.progress}%)`
-    );
+    if (this.progressBar && this.progressBar.nativeElement) {
+      this.renderer.setStyle(
+        this.progressBar.nativeElement,
+        'width',
+        `${this.progressWidth}%`
+      );
+    }
   }
 
   private clearProgress(): void {
     if (this.progressInterval) {
       clearInterval(this.progressInterval);
     }
-    this.progress = 0;
+    this.progressWidth = 0;
     this.updateProgress();
   }
 }

@@ -10,5 +10,15 @@ import { AngularPressHoldButton } from 'angular-press-hold-button';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'press-hold-button-example';
+  handleActionStarted() {
+    console.log('Action started');
+  }
+
+  handleActionCancelled() {
+    console.log('Action cancelled');
+  }
+
+  handleActionFinished() {
+    console.log('Action finished');
+  }
 }

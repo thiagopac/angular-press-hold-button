@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
-  AfterContentInit,
-  ContentChild,
   ElementRef,
+  EventEmitter,
+  Input,
+  Output,
   Renderer2,
   ViewChild,
 } from '@angular/core';
@@ -11,59 +13,81 @@ import {
   selector: 'angular-press-hold-button',
   templateUrl: './angular-press-hold-button.component.html',
   styleUrls: ['./angular-press-hold-button.component.scss'],
+  imports: [CommonModule],
   standalone: true,
 })
-export class AngularPressHoldButton implements AfterContentInit {
-  @ContentChild('iconContent') iconContent: ElementRef | undefined;
+export class AngularPressHoldButton {
   @ViewChild('progressBar') progressBar: ElementRef | undefined;
-  hasCustomIcon: boolean = false;
+
+  @Input() duration: number = 1500;
+  @Input() backgroundColor: string = '#3498db';
+  @Input() progressColor: string = '#2980b9';
+  @Input() labelStart: string = 'Press and hold';
+  @Input() labelProgress: string = 'Keep holding...';
+  @Input() labelFinish: string = 'Done!';
+
+  @Output() actionStarted = new EventEmitter<void>();
+  @Output() actionCancelled = new EventEmitter<void>();
+  @Output() actionFinished = new EventEmitter<void>();
+
+  label: string = '';
+
+  currentState: 'start' | 'progress' | 'finish' = 'start';
+
   private progressInterval: any;
   private progressWidth: number = 0;
-  duration: number = 1500;
 
-  constructor(private elRef: ElementRef, private renderer: Renderer2) {}
-
-  ngAfterContentInit(): void {
-    this.hasCustomIcon = !!this.iconContent;
+  constructor(private renderer: Renderer2) {
+    this.label = this.labelStart;
   }
 
   startAction(event: Event): void {
     event.preventDefault();
-    this.clearProgress();
-    console.log('Ação iniciada!');
-    this.progressInterval = setInterval(() => {
-      this.progressWidth = Math.min(
-        100,
-        this.progressWidth + 100 / (this.duration / 100)
-      );
-      this.updateProgress();
-      if (this.progressWidth >= 100) {
-        this.actionSuccess();
-      }
-    }, 100);
+    if (this.progressWidth < 100) {
+      this.clearProgress();
+      this.label = this.labelProgress;
+      this.currentState = 'progress';
+      this.actionStarted.emit();
+      this.progressInterval = setInterval(() => {
+        this.progressWidth = Math.min(
+          100,
+          this.progressWidth + 100 / (this.duration / 100)
+        );
+        this.updateProgress();
+        if (this.progressWidth >= 100) {
+          this.actionSuccess();
+        }
+      }, 100);
+    }
   }
 
   stopAction(event?: Event): void {
     if (event) {
       event.preventDefault();
     }
-    console.log('Ação cancelada!');
-    clearInterval(this.progressInterval);
-    this.progressInterval = setInterval(() => {
-      this.progressWidth = Math.max(
-        0,
-        this.progressWidth - 100 / (this.duration / 100)
-      );
-      this.updateProgress();
-      if (this.progressWidth <= 0) {
-        clearInterval(this.progressInterval);
-      }
-    }, 100);
+    if (this.progressWidth < 100) {
+      this.label = this.labelStart;
+      this.currentState = 'start';
+      this.actionCancelled.emit();
+      clearInterval(this.progressInterval);
+      this.progressInterval = setInterval(() => {
+        this.progressWidth = Math.max(
+          0,
+          this.progressWidth - 100 / (this.duration / 100)
+        );
+        this.updateProgress();
+        if (this.progressWidth <= 0) {
+          clearInterval(this.progressInterval);
+        }
+      }, 100);
+    }
   }
 
   private actionSuccess(): void {
-    console.log('Ação concluída com sucesso!');
     clearInterval(this.progressInterval);
+    this.label = this.labelFinish;
+    this.currentState = 'finish';
+    this.actionFinished.emit();
   }
 
   private updateProgress(): void {
@@ -77,7 +101,7 @@ export class AngularPressHoldButton implements AfterContentInit {
   }
 
   private clearProgress(): void {
-    if (this.progressInterval) {
+    if (this.progressWidth < 100 && this.progressInterval) {
       clearInterval(this.progressInterval);
     }
     this.progressWidth = 0;

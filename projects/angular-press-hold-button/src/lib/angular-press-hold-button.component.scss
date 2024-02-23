@@ -1,32 +1,41 @@
-.button-hold {
-  position: relative; // Necessário para a barra de progresso absoluta
-  width: 200px; // Ajuste conforme necessário
-  height: 50px; // Ajuste conforme necessário
-  padding: 0;
-  border: 1px solid gray;
+button {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  padding: 20px;
+  border: none;
   border-radius: 5px;
-  background-color: green;
   color: white;
   cursor: pointer;
   outline: none;
-  overflow: hidden; // Impede que a barra de progresso ultrapasse os limites do botão
-  display: flex; // Garante o alinhamento do conteúdo
-  justify-content: center; // Centraliza o conteúdo horizontalmente
-  align-items: center; // Centraliza o conteúdo verticalmente
-
-  .progress-bar {
-    height: 100%;
-    background-color: darkgreen; // Cor da barra de progresso
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%; // Inicializa oculta
-    transition: width 0.2s ease; // Suaviza a transição da barra
-    z-index: 1; // Garante que a barra fique abaixo do conteúdo do botão
-  }
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
   .label-container {
-    z-index: 2; // Garante que o texto fique acima da barra de progresso
-    position: relative; // Necessário para aplicar o z-index corretamente
+    z-index: 2;
+    position: relative;
+    flex-grow: 1;
   }
+
+  .icon-container {
+    position: relative;
+    z-index: 2;
+    font-size: 20px;
+  }
+}
+
+.progress-bar {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  transition: width 0.2s ease;
+  z-index: 1;
+}
+
+.label-container {
+  z-index: 2;
+  position: relative;
 }

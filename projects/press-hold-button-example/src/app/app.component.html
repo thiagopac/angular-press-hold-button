@@ -1,3 +1,15 @@
-<angular-press-hold-button>
-  <i class="fa fa-icon-name" icon></i>
+<angular-press-hold-button
+  [duration]="2000"
+  [backgroundColor]="'#2ecc71'"
+  [progressColor]="'#27ae60'"
+  [labelStart]="'Press and hold'"
+  [labelProgress]="'Keep holding...'"
+  [labelFinish]="'Done!'"
+  (actionStarted)="handleActionStarted()"
+  (actionCancelled)="handleActionCancelled()"
+  (actionFinished)="handleActionFinished()"
+>
+  <i class="fa-solid fa-question" slot="left" when="start"></i>
+  <i class="fa-solid fa-arrow-right" slot="right" when="progress"></i>
+  <i class="fa-solid fa-check" slot="right" when="finish"></i>
 </angular-press-hold-button>

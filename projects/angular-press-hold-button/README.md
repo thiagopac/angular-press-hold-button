@@ -13,38 +13,34 @@ Angular Press and Hold Button is a customizable, easy-to-use Angular component t
 
 To install Angular Press and Hold Button, run the following command in your Angular project:
 
-    npm install angular-press-hold-button
+```bash
+npm install angular-press-hold-button
+```
 
 ## Usage
 
 First, import `AngularPressHoldButton` in your Angular module or component:
 
-    import { AngularPressHoldButton } from 'angular-press-hold-button';
+```typescript
+import { AngularPressHoldButton } from "angular-press-hold-button";
 
-    @NgModule({
-      declarations: [AppComponent],
-      imports: [BrowserModule, AngularPressHoldButton],
-      bootstrap: [AppComponent]
-    })
-    export class AppModule {}
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AngularPressHoldButton],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
 
 Then, you can use the `angular-press-hold-button` component in your templates:
 
-    <angular-press-hold-button
-      [duration]="2000"
-      [backgroundColor]="'#2ecc71'"
-      [progressColor]="'#27ae60'"
-      [labelStart]="'Press and hold'"
-      [labelProgress]="'Keep holding...'"
-      [labelFinish]="'Done!'"
-      (actionStarted)="handleActionStarted()"
-      (actionCancelled)="handleActionCancelled()"
-      (actionFinished)="handleActionFinished()"
-    >
-      <i class="fa-solid fa-question" slot="left" when="start"></i>
-      <i class="fa-solid fa-arrow-right" slot="right" when="progress"></i>
-      <i class="fa-solid fa-check" slot="right" when="finish"></i>
-    </angular-press-hold-button>
+```html
+<angular-press-hold-button [duration]="2000" [backgroundColor]="'#2ecc71'" [progressColor]="'#27ae60'" [labelStart]="'Press and hold'" [labelProgress]="'Keep holding...'" [labelFinish]="'Done!'" (actionStarted)="handleActionStarted()" (actionCancelled)="handleActionCancelled()" (actionFinished)="handleActionFinished()">
+  <i class="fa-solid fa-question" slot="left" when="start"></i>
+  <i class="fa-solid fa-arrow-right" slot="right" when="progress"></i>
+  <i class="fa-solid fa-check" slot="right" when="finish"></i>
+</angular-press-hold-button>
+```
 
 ## Icons
 
@@ -59,8 +55,12 @@ The `slot` attribute determines the position of the icon within the button. Ther
 
 Example usage:
 
-    <i class="fa fa-icon-name" slot="left"></i> <!-- Icon on the left -->
-    <i class="fa fa-icon-name" slot="right"></i> <!-- Icon on the right -->
+```html
+<i class="fa fa-icon-name" slot="left"></i>
+<!-- Icon on the left -->
+<i class="fa fa-icon-name" slot="right"></i>
+<!-- Icon on the right -->
+```
 
 ### When Attribute
 
@@ -72,9 +72,14 @@ The `when` attribute specifies when the icon should be displayed, based on the b
 
 Example usage:
 
-    <i class="fa fa-icon-name" slot="left" when="start"></i> <!-- Shown at start -->
-    <i class="fa fa-icon-name" slot="right" when="progress"></i> <!-- Shown during progress -->
-    <i class="fa fa-icon-name" slot="right" when="finish"></i> <!-- Shown at finish -->
+```html
+<i class="fa fa-icon-name" slot="left" when="start"></i>
+<!-- Shown at start -->
+<i class="fa fa-icon-name" slot="right" when="progress"></i>
+<!-- Shown during progress -->
+<i class="fa fa-icon-name" slot="right" when="finish"></i>
+<!-- Shown at finish -->
+```
 
 By combining the `slot` and `when` attributes, you can precisely control the display of icons within the `angular-press-hold-button` component, enhancing the interactive experience.
 
@@ -101,14 +106,16 @@ By combining the `slot` and `when` attributes, you can precisely control the dis
 
 The component supports customization through CSS variables. You can override the following variables to customize the appearance:
 
-    angular-press-hold-button {
-      --button-width: 200px;
-      --button-height: 50px;
-      --button-color: white;
-      --button-padding: 20px;
-      --button-border-radius: 5px;
-      --icon-font-size: 20px;
-    }
+```scss
+angular-press-hold-button {
+  --button-width: 200px;
+  --button-height: 50px;
+  --button-color: white;
+  --button-padding: 20px;
+  --button-border-radius: 5px;
+  --icon-font-size: 20px;
+}
+```
 
 ## Contributing
 

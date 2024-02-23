@@ -4,6 +4,7 @@ import {
   ElementRef,
   EventEmitter,
   Input,
+  OnInit,
   Output,
   Renderer2,
   ViewChild,
@@ -16,15 +17,15 @@ import {
   imports: [CommonModule],
   standalone: true,
 })
-export class AngularPressHoldButton {
+export class AngularPressHoldButton implements OnInit {
   @ViewChild('progressBar') progressBar: ElementRef | undefined;
 
   @Input() duration: number = 1500;
   @Input() backgroundColor: string = '#3498db';
   @Input() progressColor: string = '#2980b9';
-  @Input() labelStart: string = 'Press and hold';
-  @Input() labelProgress: string = 'Keep holding...';
-  @Input() labelFinish: string = 'Done!';
+  @Input() labelStart: string = '';
+  @Input() labelProgress: string = '';
+  @Input() labelFinish: string = '';
 
   @Output() actionStarted = new EventEmitter<void>();
   @Output() actionCancelled = new EventEmitter<void>();
@@ -37,7 +38,9 @@ export class AngularPressHoldButton {
   private progressInterval: any;
   private progressWidth: number = 0;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2) {}
+
+  ngOnInit(): void {
     this.label = this.labelStart;
   }
 

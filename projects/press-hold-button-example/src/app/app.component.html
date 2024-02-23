@@ -1,15 +1,84 @@
-<angular-press-hold-button
-  [duration]="2000"
-  [backgroundColor]="'#3498db'"
-  [progressColor]="'#2980b9'"
-  [labelStart]="'Press and hold'"
-  [labelProgress]="'Keep holding...'"
-  [labelFinish]="'Done!'"
-  (actionStarted)="handleActionStarted()"
-  (actionCancelled)="handleActionCancelled()"
-  (actionFinished)="handleActionFinished()"
->
-  <i class="fa-solid fa-question" slot="left" when="start"></i>
-  <i class="fa-solid fa-arrow-right" slot="right" when="progress"></i>
-  <i class="fa-solid fa-check" slot="right" when="finish"></i>
-</angular-press-hold-button>
+<p style="height: 300px"></p>
+<div class="demo-item">
+  <angular-press-hold-button
+    [duration]="1500"
+    [backgroundColor]="'#00bf90'"
+    [progressColor]="'#0fa278'"
+    [labelStart]="'Press me!'"
+    [labelProgress]="'Wait.. wait.. wait...'"
+    [labelFinish]="'Thank you!'"
+    (actionStarted)="handleActionStarted()"
+    (actionCancelled)="handleActionCancelled()"
+    (actionFinished)="handleActionFinished()"
+  >
+  </angular-press-hold-button>
+</div>
+
+<div class="demo-item">
+  <angular-press-hold-button
+    [duration]="1500"
+    [backgroundColor]="'#3498db'"
+    [progressColor]="'#2980b9'"
+    [labelStart]="'Press and hold'"
+    [labelProgress]="'Keep holding...'"
+    [labelFinish]="'Done!'"
+    (actionStarted)="handleActionStarted()"
+    (actionCancelled)="handleActionCancelled()"
+    (actionFinished)="handleActionFinished()"
+  >
+    <i class="fa-solid fa-check" slot="right" when="finish"></i>
+  </angular-press-hold-button>
+</div>
+
+<div class="demo-item">
+  <angular-press-hold-button
+    [duration]="1500"
+    [backgroundColor]="'#e74c3c'"
+    [progressColor]="'#c0392b'"
+    [labelStart]="'Hold Me Tight!'"
+    [labelProgress]="'Almost There...'"
+    [labelFinish]="'Great Job!'"
+    (actionStarted)="handleActionStarted()"
+    (actionCancelled)="handleActionCancelled()"
+    (actionFinished)="handleActionFinished()"
+  >
+    <i class="fa-solid fa-hand-rock" slot="left" when="start"></i>
+    <i class="fa-solid fa-hourglass-half" slot="left" when="progress"></i>
+    <i class="fa-solid fa-thumbs-up" slot="right" when="finish"></i>
+  </angular-press-hold-button>
+</div>
+
+<div class="demo-item">
+  <angular-press-hold-button
+    [duration]="1500"
+    [backgroundColor]="'#9b59b6'"
+    [progressColor]="'#8e44ad'"
+    [labelStart]="'Dream Big'"
+    [labelProgress]="'Holding On...'"
+    [labelFinish]="'Achieved!'"
+    (actionStarted)="handleActionStarted()"
+    (actionCancelled)="handleActionCancelled()"
+    (actionFinished)="handleActionFinished()"
+  >
+    <i class="fa-solid fa-cloud" slot="right" when="start"></i>
+    <i class="fa-solid fa-rainbow" slot="right" when="progress"></i>
+    <i class="fa-solid fa-star" slot="left" when="finish"></i>
+  </angular-press-hold-button>
+</div>
+
+<div class="demo-item">
+  <angular-press-hold-button
+    [duration]="1500"
+    [backgroundColor]="'#f39c12'"
+    [progressColor]="'#d35400'"
+    [labelStart]="'Send alert'"
+    [labelProgress]="'Holding...'"
+    [labelFinish]="'Alert Sent!'"
+    (actionStarted)="handleActionStarted()"
+    (actionCancelled)="handleActionCancelled()"
+    (actionFinished)="handleActionFinished()"
+  >
+    <i class="fa-solid fa-exclamation-triangle" slot="left" when="start"></i>
+    <i class="fa-solid fa-check-circle" slot="right" when="finish"></i>
+  </angular-press-hold-button>
+</div>

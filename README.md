@@ -2,6 +2,8 @@
 
 Angular Press and Hold Button is a customizable, easy-to-use Angular component that provides a press-and-hold interaction for buttons.
 
+![press-hold-button](https://github.com/thiagopac/angular-press-hold-button/assets/3586967/d2cbadcf-29a6-41a2-b40f-3166ec8e8969)
+
 ## Features
 
 - Customizable background and progress colors.

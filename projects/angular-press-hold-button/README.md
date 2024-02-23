@@ -2,7 +2,7 @@
 
 Angular Press and Hold Button is a customizable, easy-to-use Angular component that provides a press-and-hold interaction for buttons.
 
-![press-hold-button](https://github.com/thiagopac/angular-press-hold-button/assets/3586967/9cfa5fcd-797b-445c-8df7-89a77044d4ff)
+### [Sample project](https://github.com/thiagopac/angular-press-hold-button/tree/main/projects/press-hold-button-example/src/app)
 
 [Example project](https://github.com/thiagopac/angular-press-hold-button/tree/main/projects/press-hold-button-example/src/app)
 
@@ -93,8 +93,8 @@ By combining the `slot` and `when` attributes, you can precisely control the dis
 | Input             | Description                                            | Type   | Default Value       |
 | ----------------- | ------------------------------------------------------ | ------ | ------------------- |
 | `duration`        | Duration of the press-and-hold action in milliseconds. | Number | `2000`              |
-| `backgroundColor` | Background color of the button.                        | String | `'#2ecc71'`         |
-| `progressColor`   | Color of the progress bar.                             | String | `'#27ae60'`         |
+| `backgroundColor` | Background color of the button.                        | String | `'#3498db'`         |
+| `progressColor`   | Color of the progress bar.                             | String | `'#2980b9'`         |
 | `labelStart`      | Label displayed at the start of the action.            | String | `'Press and hold'`  |
 | `labelProgress`   | Label displayed during the action.                     | String | `'Keep holding...'` |
 | `labelFinish`     | Label displayed when the action finishes.              | String | `'Done!'`           |

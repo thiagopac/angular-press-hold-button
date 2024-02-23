@@ -2,7 +2,7 @@
 
 Angular Press and Hold Button is a customizable, easy-to-use Angular component that provides a press-and-hold interaction for buttons.
 
-![press-hold-button](https://github.com/thiagopac/angular-press-hold-button/assets/3586967/d2cbadcf-29a6-41a2-b40f-3166ec8e8969)
+![press-hold-button](https://github.com/thiagopac/angular-press-hold-button/assets/3586967/9cfa5fcd-797b-445c-8df7-89a77044d4ff)
 
 ## Features
 
@@ -47,6 +47,7 @@ Then, you can use the `angular-press-hold-button` component in your templates:
 ## Icons
 
 The `angular-press-hold-button` component supports the dynamic display of icons based on the button's state. You can control the positioning and timing of icon display using the `slot` and `when` attributes respectively.
+Font icons, SVG and images are compatible.
 
 ### Slot Attribute
 

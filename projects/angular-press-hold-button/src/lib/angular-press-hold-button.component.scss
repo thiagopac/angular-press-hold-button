@@ -1,0 +1,28 @@
+.button-hold {
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #007bff;
+  overflow: hidden;
+  transition: background-color 0.3s;
+
+  .icon-slot {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-left {
+    margin-right: 8px;
+  }
+
+  .icon-right {
+    margin-left: 8px;
+  }
+}

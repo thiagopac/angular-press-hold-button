@@ -1,0 +1,13 @@
+<button
+  class="button-hold"
+  (mousedown)="startAction($event)"
+  (mouseup)="stopAction()"
+  (mouseout)="stopAction()"
+  (touchstart)="startAction($event)"
+  (touchend)="stopAction()"
+>
+  <div class="icon-slot">
+    <ng-content select="[icon]"></ng-content>
+  </div>
+  Publish
+</button>

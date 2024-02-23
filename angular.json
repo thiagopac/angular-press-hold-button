@@ -1,0 +1,122 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular-press-hold-button": {
+      "projectType": "library",
+      "root": "projects/angular-press-hold-button",
+      "sourceRoot": "projects/angular-press-hold-button/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/angular-press-hold-button/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-press-hold-button/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/angular-press-hold-button/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/angular-press-hold-button/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
+          }
+        }
+      }
+    },
+    "press-hold-button-example": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/press-hold-button-example",
+      "sourceRoot": "projects/press-hold-button-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/press-hold-button-example",
+            "index": "projects/press-hold-button-example/src/index.html",
+            "browser": "projects/press-hold-button-example/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/press-hold-button-example/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/press-hold-button-example/src/favicon.ico",
+              "projects/press-hold-button-example/src/assets"
+            ],
+            "styles": ["projects/press-hold-button-example/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "press-hold-button-example:build:production"
+            },
+            "development": {
+              "buildTarget": "press-hold-button-example:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "press-hold-button-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/press-hold-button-example/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/press-hold-button-example/src/favicon.ico",
+              "projects/press-hold-button-example/src/assets"
+            ],
+            "styles": ["projects/press-hold-button-example/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}

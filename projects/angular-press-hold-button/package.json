@@ -1,10 +1,26 @@
 {
   "name": "angular-press-hold-button",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "peerDependencies": {
     "@angular/common": "^17.2.0",
     "@angular/core": "^17.2.0"
   },
+  "keywords": [
+    "angular",
+    "button",
+    "press and hold",
+    "long press",
+    "user interaction",
+    "touch event",
+    "click event",
+    "hold button",
+    "progress button",
+    "action button",
+    "interactive button",
+    "angular button",
+    "event handling",
+    "touch interaction"
+  ],
   "dependencies": {
     "tslib": "^2.3.0"
   },

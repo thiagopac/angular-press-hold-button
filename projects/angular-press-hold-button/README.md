@@ -4,7 +4,7 @@ Angular Press and Hold Button is a customizable, easy-to-use Angular component t
 
 ### [Sample code](https://github.com/thiagopac/angular-press-hold-button/tree/main/projects/press-hold-button-example/src/app) | [Stackblitz](https://stackblitz.com/~/github.com/thiagopac/angular-press-hold-button-sample)
 
-![press-hold-button](https://github.com/thiagopac/angular-press-hold-button/assets/3586967/e2c6c886-0d9a-4648-a77b-f19f6645987e)
+![press-hold-button](https://github.com/thiagopac/angular-press-hold-button/assets/3586967/a33a055f-38ca-42a5-98d5-66b6e253cfeb)
 
 ## Features
 

@@ -1,6 +1,7 @@
 {
   "name": "angular-press-hold-button",
-  "version": "0.0.3",
+  "author": "Thiago Pires <thiagopac@gmail.com>",
+  "version": "0.0.4",
   "peerDependencies": {
     "@angular/common": "^17.2.0",
     "@angular/core": "^17.2.0"
@@ -21,6 +22,11 @@
     "event handling",
     "touch interaction"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thiagopac/angular-press-hold-button.git"
+  },
+  "license": "ISC",
   "dependencies": {
     "tslib": "^2.3.0"
   },

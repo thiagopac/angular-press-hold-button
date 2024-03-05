@@ -1,6 +1,7 @@
 {
   "name": "press-hold-button",
-  "version": "0.0.2",
+  "author": "Thiago Pires <thiagopac@gmail.com>",
+  "version": "0.0.4",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
